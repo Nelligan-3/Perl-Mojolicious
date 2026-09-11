@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<title>Chat</title>
+</head>
+<body id="app" onload="document.getElementById('rdbLang-<%= $lang %>').checked=true;document.forms['frmLogin']['hidLang'].value=document.forms['frmForms']['rdbLang'].value;document.forms['frmAccount']['hidNewLang'].value=document.forms['frmForms']['rdbLang'].value;window.jsonLabeltexts.getLabeltexts('index', document.forms['frmForms']['rdbLang'].value);">
+<h1>Chat</h1><br/>
+
+<form id="frmForms" name="frmForms" action="" method="post">
+  <label id="lblLang-en" for="rdbLang-en">English</label>
+  <input type="radio" name="rdbLang" id="rdbLang-en" style="position:absolute;left:20em;" value="en" onchange="window.jsonLabeltexts.getLabeltexts('index', this.value);document.getElementById('hidNewLang').value = this.value; document.getElementById('hidLang').value = this.value;"/><br/>
+  <label id="lblLang-fr" for="rdbLang-fr">Fran&ccedil;ais</label>
+  <input type="radio" name="rdbLang" id="rdbLang-fr" style="position:absolute;left:20em;" value="fr" onchange="window.jsonLabeltexts.getLabeltexts('index', this.value);document.getElementById('hidNewLang').value = this.value; document.getElementById('hidLang').value = this.value;"/><br/>
+  <label id="lblLang-es" for="rdbLang-es">Espa&ntilde;ol</label>
+  <input type="radio" name="rdbLang" id="rdbLang-es" style="position:absolute;left:20em;" value="es" onchange="window.jsonLabeltexts.getLabeltexts('index', this.value);document.getElementById('hidNewLang').value = this.value; document.getElementById('hidLang').value = this.value;"/><br/>
+  <label id="lblLang-pt" for="rdbLang-pt">Portugu&ecirc;s</label>
+  <input type="radio" name="rdbLang" id="rdbLang-pt" style="position:absolute;left:20em;" value="pt" onchange="window.jsonLabeltexts.getLabeltexts('index', this.value);document.getElementById('hidNewLang').value = this.value; document.getElementById('hidLang').value = this.value;"/><br/><br/>
+  <label id="lblFormLogin" for="rdbFormLogin"></label>
+  <input type="radio" name="rdbForms" id="rdbFormLogin" style="position:absolute;left:20em;" value="Login" checked="checked" onchange="document.getElementById('divLogin').style.display = 'block';document.getElementById('divAccount').style.display = 'none';"/><br/>
+  <label id="lblFormAccount" for="rdbFormAccount"></label>
+  <input type="radio" name="rdbForms" id="rdbFormAccount" style="position:absolute;left:20em;" value="Account" onchange="document.getElementById('divLogin').style.display = 'none';document.getElementById('divAccount').style.display = 'block';"/><br/><br/>
+</form>
+
+<div id="divLogin" style="display:block;">
+  <form name="frmLogin" id="frmLogin" action="/login" method="post">
+    <input type="hidden" name="hidLang" id="hidLang" value=""/>
+    <input type="hidden" name="hidAction" id="hidAction" value="login"/>
+    <input type="hidden" name="hidId" id="hidId" value="0"/>
+    <label id="lblAccountname" for="txtAccountname"></label>
+    <input type="text" name="txtAccountname" id="txtAccountname" style="position:absolute;left:20em;"/><br/>
+    <label id="lblPassword" for="txtPassword"></label>
+    <input type="password" name="txtPassword" id="txtPassword" style="position:absolute;left:20em;"/><br/>
+    <input type="hidden" name="txtPassword2" id="txtPassword2" value=""/>
+    <input type="hidden" name="txtFirstname" id="txtFirstname" value=""/>
+    <input type="hidden" name="txtLastname" id="txtLastname" value=""/>
+    <button type="submit" name="cmdLogin" id="cmdLogin"></button>
+  </form>
+</div>
+
+<div id="divAccount" style="display:none;">
+  <form name="frmAccount" id="frmAccount" action="/newaccount" method="post">
+    <input type="hidden" name="hidNewLang" id="hidNewLang" value=""/>
+    <input type="hidden" name="hidAction" id="hidAction" value="insert"/>
+    <input type="hidden" name="hidId" id="hidId" value="0"/>
+    <label id="lblNewAccountname" for="txtNewAccountname"></label>
+    <input type="text" name="txtNewAccountname" id="txtNewAccountname" style="position:absolute;left:20em;"/><br/>
+    <label id="lblNewPassword" for="txtNewPassword"></label>
+    <input type="password" name="txtNewPassword" id="txtNewPassword" style="position:absolute;left:20em;"/><br/>
+    <label id="lblNewPassword2" for="txtNewPassword2"></label>
+    <input type="password" name="txtNewPassword2" id="txtNewPassword2" style="position:absolute;left:20em;"/><br/>
+    <label id="lblNewFirstname" for="txtNewFirstname"></label>
+    <input type="text" name="txtNewFirstname" id="txtNewFirstname" style="position:absolute;left:20em;"/><br/>
+    <label id="lblNewLastname" for="txtNewLastname"></label>
+    <input type="text" name="txtNewLastname" id="txtNewLastname" style="position:absolute;left:20em;"/><br/>
+    <button type="button" name="cmdNewAccount" id="cmdNewAccount" onClick="window.accounts.validate();"></button>
+  </form>
+</div>
+
+<script src="LabelTextService.js" type="text/javascript"></script>
+<script src="AccountService.js" type="text/javascript"></script>
+</body>
+</html>
