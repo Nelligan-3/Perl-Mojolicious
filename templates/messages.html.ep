@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<title>Chat</title>
+</head>
+<body id="app" onload="window.jsonLabeltexts.getLabeltexts('messages', '<%= $lang %>');window.jsonMessages.getMessages(<%= $channelid %>);">
+<div id="divMessages">
+</div>
+<form name="frmMessage" id="frmMessage" action="/newmessage" method="post">
+  <input type="hidden" name="hidChannelId" id="hidChannelId" value="<%= $channelid %>"/>
+  <input type="hidden" name="hidAccountId" id="hidAccountId" value="<%= $accountid %>"/>
+  <input type="hidden" name="hidLang" id="hidLang" value="<%= $lang %>"/>
+  <input type="hidden" name="hidAction" id="hidAction" value="insert"/>
+  <label id="lblMessage" for="txtMessage"></label><br/>
+  <textarea cols="80" rows="10" name="txtMessage" id="txtMessage"></textarea>
+  <button type="button" name="cmdNewMessage" id="cmdNewMessage" onClick="window.jsonMessages.validate();"></button>
+</form>
+<a id="lnkReturn" href="/channels?hidLang=<%= $lang %>"></a>
+<script type="text/javascript" src="LabelTextService.js"></script>
+<script type="text/javascript" src="MessageService.js"></script>
+</body>
+</html>

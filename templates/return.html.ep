@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+<head>
+<title>Chat</title>
+</head>
+<body id="app" onLoad="window.jsonLabeltexts.getLabeltexts('return', '<%= $lang %>');">
+<p id="pReturn" /><%= $errortext %></p>
+<a id="lnkReturn" href="/?hidLang=<%= $lang %>"></a>
+<script src="LabelTextService.js" type="text/javascript"></script>
+</body>
+</html>
